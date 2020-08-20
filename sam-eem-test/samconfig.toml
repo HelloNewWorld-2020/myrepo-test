@@ -4,7 +4,7 @@ version = 0.1
 [default.deploy.parameters]
 stack_name = "eem-lambda-stack-test"
 s3_bucket = "sam-deploy-eem-test"
-s3_prefix = "eem"
+s3_prefix = "EEM"
 region = "us-east-1"
 confirm_changeset = true
 capabilities = "CAPABILITY_IAM"

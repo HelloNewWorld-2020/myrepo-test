@@ -11,29 +11,38 @@ Globals:
     Timeout: 3
 
 Resources:
-  HelloWorldFunction:
+  DbQueryFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
-      CodeUri: hello_world/
+      FunctionName: eem-query  # define the lambda function name
+      Role: arn:aws:iam::778830683937:role/service-role/boronSensorToDb
+      CodeUri: db_query/
       Handler: app.lambda_handler
       Runtime: python3.8
+      Environment:
+        Variables:
+          DB_ENDPOINT: web-eem-db.cqbstdwptqut.us-east-1.rds.amazonaws.com
+          DB_NAME: web-eem-db
+          DB_PASSWORD: KMkHoYYPGGQkCkSFk4gc
+          DB_PORT: 5432
+          DB_USER: web_eem_admin  
       Events:
         HelloWorld:
           Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
           Properties:
-            Path: /hello
-            Method: get
+            Path: /query
+            Method: ANY
 
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
   # Find out more about other implicit resources you can reference within SAM
   # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
-  HelloWorldApi:
-    Description: "API Gateway endpoint URL for Prod stage for Hello World function"
-    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/hello/"
-  HelloWorldFunction:
-    Description: "Hello World Lambda Function ARN"
-    Value: !GetAtt HelloWorldFunction.Arn
-  HelloWorldFunctionIamRole:
-    Description: "Implicit IAM Role created for Hello World function"
-    Value: !GetAtt HelloWorldFunctionRole.Arn
+  DbQueryApi:
+    Description: "API Gateway endpoint URL for Prod stage for EEM DbQuery function"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/query/"
+  DbQueryFunction:
+    Description: "EEM DbQuery Lambda Function ARN"
+    Value: !GetAtt DbQueryFunction.Arn
+  DbQueryFunctionIamRole:
+    Description: "Implicit IAM Role created for EEM DbQuery function"
+    Value: !GetAtt DbQueryFunctionRole.Arn
