@@ -43,6 +43,6 @@ Outputs:
   DbQueryFunction:
     Description: "EEM DbQuery Lambda Function ARN"
     Value: !GetAtt DbQueryFunction.Arn
-  DbQueryFunctionIamRole:
-    Description: "Implicit IAM Role created for EEM DbQuery function"
-    Value: !GetAtt DbQueryFunctionRole.Arn
+  # DbQueryFunctionIamRole:
+  #   Description: "Implicit IAM Role created for EEM DbQuery function"
+  #   Value: !GetAtt DbQueryFunctionRole.Arn
