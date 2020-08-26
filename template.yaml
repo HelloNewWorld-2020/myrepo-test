@@ -37,12 +37,12 @@ Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
   # Find out more about other implicit resources you can reference within SAM
   # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
-  DbQueryApi:
+  DbQueryTestApi:
     Description: "API Gateway endpoint URL for Prod stage for EEM DbQuery function"
     Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/query/"
-  DbQueryFunction:
+  DbQueryTestFunction:
     Description: "EEM DbQuery Lambda Function ARN"
-    Value: !GetAtt DbQueryFunction.Arn
+    Value: !GetAtt DbQueryTestFunction.Arn
   # DbQueryFunctionIamRole:
   #   Description: "Implicit IAM Role created for EEM DbQuery function"
   #   Value: !GetAtt DbQueryFunctionRole.Arn
