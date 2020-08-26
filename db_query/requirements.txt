@@ -1,3 +1,5 @@
 psycopg2-binary
 chardet
 idna
+urllib3
+certifi
