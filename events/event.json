@@ -5,7 +5,7 @@
   "httpMethod": "POST",
   "isBase64Encoded": false,
   "queryStringParameters": {
-    "foo": "bar"
+    "username": "JoeH"
   },
   "pathParameters": {
     "proxy": "/path/to/resource"
